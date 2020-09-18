@@ -202,3 +202,21 @@ select {
     color: #fff;
     background-color: #000;
 }
+
+@media only screen and (max-width: 767px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 300px;
+    }
+
+    .select {
+        margin: 0;
+    }
+    .todolist {
+        width: 280px;
+    }
+    .add-box {
+        width: 260px;
+    }
+}
