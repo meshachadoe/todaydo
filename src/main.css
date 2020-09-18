@@ -14,7 +14,7 @@ html, body {
 
 main {
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -180,6 +180,7 @@ select {
     width: 10rem;
     height: 4rem;
     border: 8px solid #000;
+    background-color: #FFF;
     border-radius: 20px;
     cursor: pointer;
     padding: 0.5rem 0.8rem;
@@ -191,6 +192,7 @@ select {
     content: "\25BC";
     position: absolute;
     color: #000;
+    background-color: #FFF;
     top: 7px;
     right: 0;
     padding: 1rem;
