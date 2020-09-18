@@ -14,7 +14,7 @@ html, body {
 
 main {
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -192,7 +192,6 @@ select {
     content: "\25BC";
     position: absolute;
     color: #000;
-    background-color: #FFF;
     top: 7px;
     right: 0;
     padding: 1rem;
@@ -206,6 +205,9 @@ select {
 }
 
 @media only screen and (max-width: 767px) {
+    main {
+        height: 90vh;
+    }
     .header {
         flex-direction: column;
         align-items: flex-start;
@@ -217,6 +219,7 @@ select {
     }
     .select::after {
         color: #000;
+        background-color: #FFF;
         padding: 8px;
         top: 14px;
         right: 12px;
