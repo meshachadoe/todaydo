@@ -1,0 +1,204 @@
+@font-face {
+    font-family: 'AvenirNext';
+    src: url('Avenir\ Next\ Condensed.ttc') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    color: #FFF;
+    font-family: 'AvenirNext', sans-serif;
+    font-style: italic;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-size: 60px;
+    margin: 0;
+    line-height: 90%;
+}
+
+.header {
+    display: flex;
+    width: 430px;
+    margin-bottom: 10px;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+/* LIST TODO SECTION */
+
+.todolist {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0 10px;
+    padding-top: 10px;
+    margin: 0;
+    height: 60vh;
+    width: 400px;
+    border: 8px solid #000;
+    border-radius: 20px;
+    background-color: #FFF;
+    overflow-y: scroll;
+}
+
+.todolist__todo {
+    display: flex;
+    height: 40px;
+    flex-direction: row;
+    padding: 10px 20px;
+    margin: 5px 0;
+    font-size: 20px;
+    color: white;
+    background-color: #101010;
+    border-radius: 15px;
+}
+
+.todolist__tododesc {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.todolist__tododesc input {
+    margin: 8px;
+    margin-left: 0px;
+}
+
+.todolist__todo:hover {
+    background-color: #303030;
+}
+
+input[type=checkbox] {
+    height: 20px;
+    width: 20px;
+}
+/* 
+.todolist__todo .delete-icon:hover { display: inline-block; }
+.todolist__todo .delete-icon:active { transform: translateY(2px); } */
+
+button {
+    outline: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    color: #FFF;
+    background-color: #101010;
+    height: 40px;
+    font-size: 40px; 
+}
+
+.delete-btn {
+    display: none;
+}
+
+.delete-btn:hover {
+    display: block;
+}
+
+.delete-icon {
+    display: inline-block;
+    font-size: inherit;
+    color: #FFF;
+    /* display: none; */
+}
+
+.todolist__todo:hover .delete-btn {
+    background-color: #303030;
+    display: block;
+}
+
+/* ADD TODO SECTION */
+
+input[type=text] {
+    height: 40px;
+    width: 90%;
+    color: #FFF;
+    background-color: #000;
+    font-family: 'AvenirNext', sans-serif;
+    font-size: 20px;
+    border: none;
+}
+
+input[type=text]:focus {
+    outline:none;
+}
+
+.add-box {
+    display: flex;
+    flex-direction: row;
+    color: #FFF;
+    background-color: #000;
+    border: 4px solid #FFF;
+    width: 380px;
+}
+
+.add-box:hover {
+    background-color: #000;
+}
+
+.add-btn {
+    color: #FFF;
+    background-color: #000;
+}
+
+.add-btn:hover {
+    color: #303030;
+}
+
+/* DROPDOWN DISPLAy */
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+.select {
+    position: relative;
+    overflow: hidden;
+    margin-left: 80px;
+}
+
+select {
+    color: #000;
+    width: 10rem;
+    height: 4rem;
+    border: 8px solid #000;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 0.5rem 0.8rem;
+    font-family: 'AvenirNext', sans-serif;
+    font-size: 16px;
+}
+
+.select::after {
+    content: "\25BC";
+    position: absolute;
+    color: #000;
+    top: 7px;
+    right: 0;
+    padding: 1rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.select:hover::after {
+    color: #fff;
+    background-color: #000;
+}
