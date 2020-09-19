@@ -14,16 +14,16 @@ const listToDos = []
 
 // Load data from local storage
 function loadData() {
-    for (let i = 0; i < localStorage.length; i++) {
-        let todo, status
-        todo = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    let todo, status
+    todoArray = JSON.parse(localStorage.getItem('listToDos'));
+    todoArray.forEach((todo, index) => {
         todo.completed ? status = 'checked' : status = ''
-        const todoHTML = `<li class="todolist__todo" id=${todo.id}><div class="todolist__tododesc"><input type="checkbox" class="checkbox ${status}" ${status}><label>${todo.desc}</label></div><button class="delete-btn"><ion-icon name="close-circle" class="delete-icon"></ion-icon></button></li>`
+        const todoHTML = `<li class="todolist__todo ${status}" id=${todo.id}><div class="todolist__tododesc"><input type="checkbox" class="checkbox" ${status}><label>${todo.desc}</label></div><button class="delete-btn"><ion-icon name="close-circle" class="delete-icon"></ion-icon></button></li>`
         document.querySelector(DOMStrings.wrapperToDos).insertAdjacentHTML('beforeend', todoHTML)
         console.log(todoHTML)
-        
         listToDos.push(new Todo(todo.id, todo.desc, todo.completed))
-    }
+    })
+
 }
 
 loadData()
@@ -51,13 +51,11 @@ function addToDo() {
     // Add todo to array
     todo = new Todo(newID, document.querySelector(DOMStrings.fieldAdd).value, false)
     listToDos.push(todo)
-    console.log(JSON.stringify(todo))
-    localStorage.setItem(`${newID}`, JSON.stringify(todo))
+    localStorage.setItem('listToDos', JSON.stringify(listToDos))
 
     // Add todo to UI
     const newTodo = `<li class="todolist__todo" id=${todo.getID}><div class="todolist__tododesc"><input type="checkbox" class="checkbox"><label>${todo.getDesc}</label></div><button class="delete-btn"><ion-icon name="close-circle" class="delete-icon"></ion-icon></button></li>`
     document.querySelector(DOMStrings.wrapperToDos).insertAdjacentHTML('beforeend', newTodo)
-    console.log(newTodo)
 
     // Clear fields
     clearFields()
@@ -74,8 +72,9 @@ function completeToDo(e) {
         listToDos.forEach((cur, index) => {
             if (cur.id == todoID) {
                 newTodo = new Todo(cur.getID, cur.getDesc, !cur.completed)
-                localStorage.setItem(`${cur.getID}`, JSON.stringify(newTodo))
                 cur.completed = !cur.completed
+                // Update data in local storage
+                localStorage.setItem('listToDos', JSON.stringify(listToDos))
             }
         })
     }
@@ -90,7 +89,7 @@ function deleteToDo(e) {
         listToDos.forEach((cur, index) => {
             if (cur.getID == todoID) {
                 listToDos.splice(index, 1)
-                localStorage.removeItem(`${cur.getID}`)
+                localStorage.setItem('listToDos', JSON.stringify(listToDos))
             }
         })
 
@@ -112,13 +111,13 @@ function clearFields() {
 document.getElementsByTagName('select')[0].onchange = function() {
     const todos = document.querySelector(DOMStrings.wrapperToDos).childNodes
     todos.forEach((cur) => {
+        console.log(cur)
         switch(this.selectedIndex) {
             case 0:
                 cur.style.display = 'flex';
                 break
             case 1:
                 if (cur.classList.contains('checked')) {
-                    console.log(cur)
                     cur.style.display = 'flex';
                 } else {
                     cur.style.display = 'none';

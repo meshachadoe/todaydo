@@ -29,7 +29,7 @@ h1 {
 
 .header {
     display: flex;
-    width: 430px;
+    width: 450px;
     margin-bottom: 10px;
     flex-direction: row;
     justify-content: flex-start;
@@ -172,12 +172,12 @@ select {
 .select {
     position: relative;
     overflow: hidden;
-    margin-left: 80px;
+    margin-left: 70px;
 }
 
 select {
     color: #000;
-    width: 10rem;
+    width: 11rem;
     height: 4rem;
     border: 8px solid #000;
     background-color: #FFF;
@@ -193,8 +193,8 @@ select {
     position: absolute;
     color: #000;
     top: 7px;
-    right: 0;
-    padding: 1rem;
+    right: 5px;
+    padding: 15px;
     pointer-events: none;
     transition: all 0.3s ease;
 }
