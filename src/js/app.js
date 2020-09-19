@@ -16,14 +16,15 @@ const listToDos = []
 function loadData() {
     let todo, status
     todoArray = JSON.parse(localStorage.getItem('listToDos'));
-    todoArray.forEach((todo, index) => {
-        todo.completed ? status = 'checked' : status = ''
-        const todoHTML = `<li class="todolist__todo ${status}" id=${todo.id}><div class="todolist__tododesc"><input type="checkbox" class="checkbox" ${status}><label>${todo.desc}</label></div><button class="delete-btn"><ion-icon name="close-circle" class="delete-icon"></ion-icon></button></li>`
-        document.querySelector(DOMStrings.wrapperToDos).insertAdjacentHTML('beforeend', todoHTML)
-        console.log(todoHTML)
-        listToDos.push(new Todo(todo.id, todo.desc, todo.completed))
-    })
-
+    if (todoArray) {
+        todoArray.forEach((todo, index) => {
+            todo.completed ? status = 'checked' : status = ''
+            const todoHTML = `<li class="todolist__todo ${status}" id=${todo.id}><div class="todolist__tododesc"><input type="checkbox" class="checkbox" ${status}><label>${todo.desc}</label></div><button class="delete-btn"><ion-icon name="close-circle" class="delete-icon"></ion-icon></button></li>`
+            document.querySelector(DOMStrings.wrapperToDos).insertAdjacentHTML('beforeend', todoHTML)
+            console.log(todoHTML)
+            listToDos.push(new Todo(todo.id, todo.desc, todo.completed))
+        })
+    }
 }
 
 loadData()
